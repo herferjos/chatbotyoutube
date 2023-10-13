@@ -3,6 +3,6 @@ langchain
 awadb 
 sentence_transformers 
 faiss-cpu 
-openai 
 tiktoken 
-gradio
+streamlit
+hugchat
