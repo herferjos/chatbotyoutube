@@ -55,7 +55,10 @@ def chat(question):
         Please do not invent any information, and I am asking about information in the Youtube Video.
         Context:{docs}
         Question:{question}"""
-    
+      
+    id = st.session_state.chatbot.new_conversation()
+    st.session_state.chatbot.change_conversation(id)
+      
     respuesta = st.session_state.chatbot.query(prompt)['text']
     return respuesta
   else:
