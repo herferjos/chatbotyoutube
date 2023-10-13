@@ -66,15 +66,14 @@ def chat(question):
 
 st.title("Ask Question Youtube Videos")
 
-with st.sidebar:
-    url = st.text_input(label="url", placeholder="Youtube Video URL", label_visibility="hidden")
-    if st.button(label="Save"):
-        st.session_state['url'] = url
-        database = get_transcript(url)
-        st.session_state['database'] = FAISS.from_documents(database, st.session_state.embeddings)
+url = st.text_input(label="url", placeholder="Youtube Video URL", label_visibility="hidden")
+if st.button(label="Save"):
+    st.session_state['url'] = url
+    database = get_transcript(url)
+    st.session_state['database'] = FAISS.from_documents(database, st.session_state.embeddings)
     
 if 'url' not in st.session_state:
-    st.write("Please, introduce link URL from the YouTube Video")
+    st.warning("Please, introduce link URL from the YouTube Video")
 
 else:
     # Initialize chat history
