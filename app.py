@@ -35,7 +35,7 @@ def get_transcript(url):
 
     text_splitter = RecursiveCharacterTextSplitter(
         # Set a really small chunk size, just to show.
-        chunk_size = 1500,
+        chunk_size = 2000,
         chunk_overlap  = 100,
         length_function = len,
         is_separator_regex = False,
@@ -49,7 +49,7 @@ def get_transcript(url):
 @st.cache_data(show_spinner=False, persist = True)
 def chat(question):
   if 'database' in st.session_state:
-    docs = st.session_state.database.similarity_search(question)
+    docs = st.session_state.database.similarity_search_with_relevance_scores(question, k=7)
 
     prompt = f"""You are my Youtube Asisstant. I will pass you texts from a Youtube Video Transcrip and I need you to use them to answer my question from the Youtube Video.
         Please do not invent any information, and I am asking about information in the Youtube Video.
