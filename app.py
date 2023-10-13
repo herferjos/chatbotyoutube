@@ -5,7 +5,7 @@ from langchain.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import AwaEmbeddings
 import os
-import hugchat
+from hugchat import hugchat
 import streamlit as st
 
 
